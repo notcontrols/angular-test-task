@@ -1,0 +1,18 @@
+<div class="container mt-3">
+  <div class="d-flex align-items-center mb-3">
+    <button (click)="toggleSubmit()" class="btn" [ngClass]="(isSubmitting$ | async) ? 'btn-danger' : 'btn-success'">{{ (isSubmitting$ | async) ? 'Cancel' : 'Submit all forms' }}</button>
+    <span *ngIf="isSubmitting$ | async" class="timer">{{ timeRemaining$ | async | date:'mm:ss' }}</span>
+  </div>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+    <div *ngFor="let form of forms$ | async" class="col">
+      <app-form-card [form]="form"></app-form-card>
+    </div>
+    <div class="col d-flex">
+      <button (click)="addForm()" class="card p-3 mb-3 add-form-button" [disabled]="forms.length >= 10 || (isSubmitting$ | async)">
+        <div class="add-form-button-circle">
+          <span class="plus-sign">+</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

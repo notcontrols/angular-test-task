@@ -1,0 +1,16 @@
+<div *ngIf="form" [formGroup]="form" class="card p-3 mb-3">
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input formControlName="country" cardInputValidator="country" [ngbTypeahead]="search" class="form-control" id="country" />
+  </div>
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input formControlName="username" cardInputValidator="username" class="form-control" id="username" />
+  </div>
+
+  <div class="form-group">
+    <label for="birthday">Birthday</label>
+    <input formControlName="birthday" type="date" cardInputValidator="birthday" class="form-control" id="birthday" />
+  </div>
+</div>
